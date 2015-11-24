@@ -20,7 +20,7 @@ is a given response/match pair. New imposters can be added or deleted
 on this page as well.
 
 > ### Notes 
-
+> * Http protocol only
 > * For any element in Response or Match, if left blank it will not be 
     included in the mountebank json. 
 > * Query elements in match criteria use only deepEquals 
