@@ -37,7 +37,7 @@ associated with a collection, currently the description and the port.
 
 ## Mountebank JSON Page</div>   
 This page provides a read only display of the JSON that can be posted to 
-Mountebank's imposters endpoint. Additionally one can post directly 
+Mountebank's imposters endpoint. Additionally one can post directly to
 mountebank via a form. Provide the base url to mountebank, and choose the
 action, either post or delete. Note that Mountebank will need the '--allowCORS'
 option for this to work.
