@@ -35577,11 +35577,11 @@ function mountebankService($log, $http)
                 "deleteFromMountebank": deleteFromMountebank
             }
 
-    function dataServiceError(errorResponse) {
-        $log.error('XHR Failed for MountebankService');
-        $log.error(errorResponse);
-        return errorResponse;
-    }
+//    function dataServiceError(errorResponse) {
+//        $log.error('XHR Failed for MountebankService');
+//        $log.error(errorResponse);
+//        return errorResponse;
+//    }
 
     /**
      * delete content from mountebank server at the given port
@@ -35685,6 +35685,21 @@ function mountebankService($log, $http)
                         "is": isResponse
                     };
                     newStub.responses.push(newResponse);
+                    
+                    ////decorate ///////////////////////////////
+                    if (!response.decorate)
+                    {
+                        response.decorate = "";
+                    }
+                    if (response.decorate.trim().length > 1)
+                    {
+                        newResponse["_behaviors"] = {"decorate": response.decorate};
+                    }
+                    
+                    
+                    
+                   ////decorate /////////////////////////////// 
+                    
                 }// end if not using injection for response
             })
 
@@ -36444,6 +36459,20 @@ angular.module('myApp')
             };
             
             /**
+             * used to format the decorate function if any
+             * @param {type} currentResponse
+             * @returns {undefined}
+             */
+            vm.formatDecorate = function(currentResponse)
+            {
+                if (!currentResponse.decorate)
+                {
+                    currentResponse.decorate = "";
+                }
+                currentResponse.decorate = js_beautify(currentResponse.decorate);
+            }
+            
+            /**
              * compose the display for the buttons that switch imposters or sort
              * imposters
              * @param {type} idx 0 based value passed in
@@ -36652,6 +36681,7 @@ angular.module('myApp').directive('headers',
                             $scope.customize.keyLabel = "Key";
                             $scope.customize.headerText = "";
                         }
+                         
 
                     };
 
